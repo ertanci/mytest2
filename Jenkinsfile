@@ -10,9 +10,18 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             echo 'merhaba'
+          }
+        }
+
+        stage('nana') {
+          steps {
+            retry(count: 2) {
+              echo 'tata'
+            }
+
           }
         }
 
