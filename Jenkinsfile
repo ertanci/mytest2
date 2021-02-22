@@ -29,8 +29,20 @@ pipeline {
     }
 
     stage('write tata') {
-      steps {
-        echo 'tata'
+      parallel {
+        stage('write tata') {
+          steps {
+            echo 'tata'
+          }
+        }
+
+        stage('ozan') {
+          steps {
+            build 'job2'
+            powershell(script: 'ertan.ps1', returnStatus: true, returnStdout: true)
+          }
+        }
+
       }
     }
 
